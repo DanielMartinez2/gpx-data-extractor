@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.vscode/
+.DS_Store
+
+# Local GPX datasets
+*.gpx
+*.txt
+
+# Keep portfolio examples
+!examples/
+!examples/input/
+!examples/output/
+!examples/input/*.gpx
+!examples/output/*.txt
