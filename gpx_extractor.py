@@ -9,7 +9,7 @@ def main():
     arquivos = os.listdir(diretorio_principal)
 
     for arquivo in arquivos:
-        if re.findall('\.gpx$', arquivo):
+        if re.findall(r'\.gpx$', arquivo):
             nome_txt = 'arquivo' + arquivo.removeprefix('linha').removesuffix('.gpx') + '.txt'
             analisa_xml_escreve_txt(arquivo, nome_txt)
 
@@ -26,9 +26,9 @@ def analisa_xml_escreve_txt(arquivo, nome_txt):
     angles = []
     for wpt in myroot.findall("{http://www.topografix.com/GPX/1/1}wpt"):
         lat_long = wpt.attrib
-        elevation = wpt.find("{http://www.topografix.com/GPX/1/1}ele").text
-        desc = wpt.find("{http://www.topografix.com/GPX/1/1}desc").text
-        name = wpt.find("{http://www.topografix.com/GPX/1/1}name").text
+        elevation = wpt.findtext("{http://www.topografix.com/GPX/1/1}ele", default='')
+        desc = wpt.findtext("{http://www.topografix.com/GPX/1/1}desc", default='')
+        name = wpt.findtext("{http://www.topografix.com/GPX/1/1}name", default='')
         lat.append(lat_long['lat'])
         long.append(lat_long['lon'])
         elev.append(elevation)
