@@ -17,3 +17,4 @@ venv/
 !examples/output/*.txt
 
 files
+files/*.gpx
